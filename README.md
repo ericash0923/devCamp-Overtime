@@ -17,3 +17,7 @@
 
 ## UI:
  - Bootstrap -> formatting
+
+## Refactor TODAS:
+ - Add full_nume method for users
+ - Refactor user association integration test in post_spec
