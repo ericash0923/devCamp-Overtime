@@ -28,28 +28,52 @@ describe 'navigate' do
   end
   
   describe 'creation' do
-    	before do
-    		visit new_post_path
-    	end
-  
-    	it 'has a new form that can be reached' do
-    		expect(page.status_code).to eq(200)
-    	end
-  
-    	it 'can be created from new form page' do
-        fill_in 'post[date]', with: Date.today
-        fill_in 'post[rationale]', with: "Some rationale"
-        click_on "Save"
-  
-        expect(page).to have_content("Some rationale")
-    	end
-    	
-    	it 'will have a user associated it' do
-    	  fill_in 'post[date]', with: Date.today
-        fill_in 'post[rationale]', with: "User_Association"
-        click_on "Save"
-        
-        expect(User.last.posts.last.rationale).to eq("User_Association")
-    	end
+  	before do
+  		visit new_post_path
+  	end
+
+  	it 'has a new form that can be reached' do
+  		expect(page.status_code).to eq(200)
+  	end
+
+  	it 'can be created from new form page' do
+      fill_in 'post[date]', with: Date.today
+      fill_in 'post[rationale]', with: "Some rationale"
+      click_on "Save"
+
+      expect(page).to have_content("Some rationale")
+  	end
+  	
+  	it 'will have a user associated it' do
+  	  fill_in 'post[date]', with: Date.today
+      fill_in 'post[rationale]', with: "User_Association"
+      click_on "Save"
+      
+      expect(User.last.posts.last.rationale).to eq("User_Association")
+  	end
   end
+    
+  describe 'edit' do
+    before do
+      @post = FactoryBot.create(:post)
+    end
+    it 'can be reached by clicking edit on index page' do
+      
+      visit posts_path
+      
+      click_link("edit_#{@post.id}")
+      
+    end
+    
+    it 'can be edited' do
+      visit edit_post_path(@post)
+      
+      fill_in 'post[date]', with: Date.today
+      fill_in 'post[rationale]', with: "Edit Content"
+      click_on "Save"
+
+      expect(page).to have_content("Edit Content")
+    end
+  end
+  
 end
