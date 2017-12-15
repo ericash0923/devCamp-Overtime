@@ -22,7 +22,5 @@
  - x Update the styles for forms
 
 ## Refactor TODAS:
- - Refactor user association integration test in post_spec
  - Refactor post/_form for admin user with status
- - Fix post_spec.rb:82 to use factories
- - Fix post_spec.rb:52 to have correct user reference and not require update
+
