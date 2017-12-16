@@ -6,9 +6,9 @@
  - x Post -> date:date rationale:text
  - x User -> Devise
  - x AdminUser -> STI
+ - AuditLog
 
 ## Features
-
  - Approval Workflow
  - SMS Sending -> link to approval or overtime input
  - x Administrate admin dashboard
@@ -18,9 +18,9 @@
 
 ## UI:
  - x Bootstrap -> formatting
- - Icons form Font Awesome
+ - x Icons form glyphicon
  - x Update the styles for forms
 
 ## Refactor TODAS:
- - Refactor post/_form for admin user with status
+ - x Refactor post/_form for admin user with status
 
