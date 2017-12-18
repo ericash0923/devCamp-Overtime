@@ -22,5 +22,5 @@
  - x Update the styles for forms
 
 ## Refactor TODAS:
- - x Refactor post/_form for admin user with status
+
 
