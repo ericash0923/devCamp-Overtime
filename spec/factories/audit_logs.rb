@@ -3,6 +3,6 @@ FactoryBot.define do
     user
     status 0
     start_date (Date.today - 6.days)
-    end_date null
+    end_date nil
   end
 end
