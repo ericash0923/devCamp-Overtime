@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :audit_logs, expect: [:new, :edit, :destory]
+  resources :audit_logs, expect: [:new, :edit, :destory] do
+    member do 
+      get :confirm
+    end
+  end
   
   namespace :admin do
     resources :users
@@ -14,6 +18,7 @@ Rails.application.routes.draw do
       get :approve
     end
   end
+  
   devise_for :users, skip: [:registrations]
   root to: 'static#homepage'
 end
