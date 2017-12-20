@@ -8,7 +8,7 @@ namespace :notification do
       employees.each do |employee|
         SmsTool.send_sms(number: employee.phone, message: notification_message)
       end
-    # end
+    end
   end
 
   desc "Sends mail notification to managers (admin users) each day to inform of pending overtime request"
