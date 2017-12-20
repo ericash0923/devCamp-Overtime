@@ -8,11 +8,18 @@ namespace :notification do
     # User.all.each do |user|
     #   SmsTool.send_sms()
     # end
-    # number: "555-555-3323"
-    # number: "5555553323"
-    # No spaces or dashes
-    # exactly 10 characters
-    # all characters have to be a number
+  end
+  
+  desc "Sends mail notification to managers (admin users) each day to inform of pending overtime request"
+  task manager_email: :environment do
+    submitted_post = Post.submitted
+    admin_users = AdminUser.all
+    
+    if submitted_post.count > 0
+      admin_users.each do |admin|
+        ManagerMailer.email(admin).deliver_later
+      end
+    end
   end
 
 end
